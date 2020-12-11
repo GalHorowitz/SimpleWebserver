@@ -7,6 +7,6 @@
 #define LISTEN_PORT "8080"
 
 SOCKET createServer();
-SOCKET acceptClient(SOCKET serverSocket);
-void endClient(SOCKET clientSocket);
-void endServer(SOCKET serverSocket);
+SOCKET acceptClient(SOCKET server_socket);
+void endClient(SOCKET client_socket);
+void endServer(SOCKET server_socket);
