@@ -28,10 +28,7 @@ public:
 
 	ResponseBuilder& setStatusCode(StatusCode code);
 
-	ResponseBuilder& addHeader(const string& name, const string& value) {
-		headers.push_back(make_pair(name, value));
-		return *this;
-	}
+	ResponseBuilder& addHeader(const string& name, const string& value);
 
 	// Throws if the response already has a body
 	ResponseBuilder& addBody(const string& contents);

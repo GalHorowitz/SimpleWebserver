@@ -21,7 +21,7 @@ ResponseBuilder& ResponseBuilder::addBody(const string& contents) {
 	return *this;
 }
 
-ResponseBuilder& ResponseBuilder::addFileBody(const string& filepath, bool fail_with_404 = true) {
+ResponseBuilder& ResponseBuilder::addFileBody(const string& filepath, bool fail_with_404) {
 	std::ifstream served_file(filepath, std::ios::in | std::ios::binary);
 	if (served_file) {
 		// No need to actually read the file is this a head response
@@ -41,6 +41,8 @@ ResponseBuilder& ResponseBuilder::addFileBody(const string& filepath, bool fail_
 		setStatusCode(StatusCode::NotFound);
 		addFileBody(RESPONSE_404, false);
 	} else {
+		// TODO: We should handle client/server exceptions differently,
+		// currently we will respond with a 400 if we can't find local response files.
 		throw std::runtime_error("Failed to read file body");
 	}
 
@@ -206,7 +208,7 @@ void serveClient(SOCKET client_socket) {
 			string header_name = headerline.substr(0, headerline.find(": "));
 			// Header names are case-insensitive
 			if (caseInsensitiveEquals(header_name, "Content-Length")) {
-				// TODO: Recieve the rest of the body
+				// TODO: Receive the rest of the body
 				// Is this relevant for GET?
 				std::cout << "\tHas content!" << std::endl;
 			}
