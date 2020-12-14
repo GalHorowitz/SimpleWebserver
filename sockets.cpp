@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "server_settings.h"
+
 // Simple Windows TCP socket server written according to the MSDN docs
 
 SOCKET createServer() {

@@ -1,5 +1,6 @@
 #pragma once
 
+#define LISTEN_PORT "8080"
 #define SERVE_ROOT "./server_root/"
 #define MAX_SIMULTANEOUS_CONNECTIONS 3 // This is essentially the number of threads in the pool
 

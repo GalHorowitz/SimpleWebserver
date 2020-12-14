@@ -74,7 +74,6 @@ int main() {
 					break;
 				}
 			}
-			std::cout << "THREAD " << available_thread << std::endl;
 
 			if (available_thread == -1) {
 				// We have too many simulatenuous connections, we respond with a 503 error code
